@@ -1,12 +1,12 @@
 
 import { Item } from 'dynamoose/dist/Item';
-import { StatusLead } from 'src/utils/enums';
+import { StatusProject } from 'src/utils/enums';
 
 export interface Project extends Item {
     pk: string,
     sk: string,
     name: string,
-    status: StatusLead,
+    status: StatusProject,
     domains: string[],
     accounts?: string[], //não esquecer de zerar na hora de normalizar
     description?: string,

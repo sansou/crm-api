@@ -18,17 +18,12 @@ export class ProjectService {
     this.dbInstance = dynamoose.model<Project>('crm', ProjectSchema)
   }
 
-  async create(dto: CreateProjectDTO, userId: string) {
+  async create(dto: CreateProjectDTO) {
     const pk = createDynamooseId(createId(), EntityTypes.PROJECT);
-
-    if (!dto.accounts.includes(userId)) {
-      dto.accounts.push(userId);
-    }
-
     let project: Project;
-
+    
     try {
-      project = await this.dbInstance.create({ pk, sk: pk, ...dto });
+      project = await this.dbInstance.create({ pk, sk: pk, ...dto });  
     } catch (error) {
       throw new Error(error);
     }

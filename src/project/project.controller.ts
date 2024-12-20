@@ -13,8 +13,8 @@ export class ProjectController {
     @Body() projDto: CreateProjectDTO
   ) {    
     // TODO
-    //falta pegar o id do usuário que vem do front
-    return await this.service.create(projDto, "usuarioteste");
+    //falta pegar o id do usuário que vem do front    
+    return await this.service.create(projDto);
   }
 
   @Get(':id')
@@ -24,6 +24,7 @@ export class ProjectController {
 
   @Get()
   async getAll() {
+    console.log('Entrei no controller');
     return this.service.findAll();
   }
 
